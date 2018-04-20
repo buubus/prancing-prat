@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple DAPP</title>
+    <scrip <script src="web3.js/dist/web3.min.js"></script>
+    <script type="text/javascript">
+                if (typeof web3 !== 'undefined') {
+                    web3 = new Web3(web3.currentProvider);
+                } else {
+                    // set the provider you want from Web3.providers
+                    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                }
+
+                var contract_instance = web3.eth.contract(contract_abi).at(contract_address);
+
+                function getBalance(){
+                    //document.getElementById("myBalance").innerText = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether");
+                }
+                function getOwner(){
+
+                }
+                function updateBalance(){
+                    document.getElementById(
+
+                }
+            </script>
+</head>
+<body>
+    <h1> Interacting with a simple Contract</h1>
+
+    <table>
+        <tr>
+            <td>
+                <button onclick="getBalance()">Get My Balance</button>
+            </td>
+            <td>
+                <span id="myBalance"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick=""getOwner()">Owner Address</button>
+            </td>
+            <td>
+                <span id="theOwner"> </span>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
