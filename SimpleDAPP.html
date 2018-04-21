@@ -5,6 +5,9 @@
     <title>Simple DAPP</title>
     <script src="web3.js/dist/web3.min.js"></script>
     <script type="text/javascript">
+
+                var contract_address = "0x8678c2a5347a132EbEf8D9DFDaaD4C4cCAD33105";
+                var contract_abi = [ { "constant": false, "inputs": [ { "name": "newNumber", "type": "uint256" } ], "name": "changeNumber", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getBalance", "outputs": [ { "name": "", "type": "uint256", "value": "3" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [ { "name": "", "type": "address", "value": "0xdb52ec093d146591e8dd52f23404908b8b92d7d7" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ];
                 if (typeof web3 !== 'undefined') {
                     web3 = new Web3(web3.currentProvider);
                 } else {
@@ -14,14 +17,16 @@
 
                 var contract_instance = web3.eth.contract(contract_abi).at(contract_address);
 
-                function getBalance(){
+                function getMyNum(){
                     //document.getElementById("myBalance").innerText = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether");
+                    document.getElementById("myBalance").innerText = contract_instance.getBalance();
                 }
                 function getOwner(){
-
+                    document.getElementById("theOwner").innerText = contract_instance.getOwner();
                 }
-                function updateBalance(){
-                    document.getElementById(
+                function ChangeNum(){
+                    //
+
 
                 }
             </script>
@@ -32,7 +37,7 @@
     <table>
         <tr>
             <td>
-                <button onclick="getBalance()">Get My Balance</button>
+                <button onclick="getMyNum()">Get My Balance</button>
             </td>
             <td>
                 <span id="myBalance"></span>
@@ -44,6 +49,14 @@
             </td>
             <td>
                 <span id="theOwner"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="newNum">
+            </td>
+            <td>
+                <button onclick="ChangeNum(getElementById('newNum').value)">Update Number</button>
             </td>
         </tr>
     </table>
