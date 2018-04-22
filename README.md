@@ -5,6 +5,10 @@ Once geth is installed and your local test chain has been created you need to ru
 
 geth --datadir <path_to_mychaindata_folder> --rpc --rpccorsdomain "*"
 
+to enable further web3 endpoints
+
+geth --datadir <path_to_myChainData> --rpc --rpccorsdomain "*" --rpcapi web3,eth,personal
+
 This command starts the localchain up and beings listener on rpc 
 
 geth attach ipc:<path to IPC file> --unlock 0 --mine 1
