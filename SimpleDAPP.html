@@ -29,13 +29,13 @@
                     var currentNum = contract_instance.getBalance().toNumber();
                     currentNum++;
                     web3.personal.unlockAccount(web3.eth.accounts[0], 'password');
-                    contract_instance.changeNumber(currentNum, {from: web3.eth.accounts[0], gas: 200000, function (error, result) {
+                    contract_instance.changeNumber(currentNum, {from: web3.eth.accounts[0], gas: 200000, function(error, result) {
                         if(error){
                             console.error(error);
                         } else {
                             var txHash = result;
                             console.log(txHash);
-                            callWhenMiner(txHash, getMyNum());
+                            callWhenMined(txHash, getMyNum);
                         }
                     }
                     });
@@ -54,7 +54,7 @@
                                 callback();
                             }
                         }
-                    });
+                    })
                 }
             </script>
 </head>
